@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Publishers</title>
+    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js" charset="utf-8"></script>
+
+    <!-- CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+<!-- jQuery and JS bundle w/ Popper.js -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+</head>
+<body >
+    <%- include('./navbar')  %> 
+
+    <div class="jumbotron bg-dark text-center text-white">
+        <h1 class="display-3"><%= items[items.length - 1].title %></h1>
+        <br>
+       
+        <div class="row">
+
+            <div class="col-5"> <img style="width: 100%;" src="<%= items[items.length - 1].image  %> " alt=""> </div>
+            <div class="col-7">
+                <p class="lead">
+                    <%= items[items.length - 1].description  %>
+                </p>
+              
+
+
+            </div>
+
+        </div>
+
+       
+    </div>
+
+    
+    <br>
+    <div style="width: 90%; margin: auto;">
+
+    <div class="row">
+
+    
+
+            <% for(var a =0; a < items.length; a++){ %> 
+
+                <div class="col-xl-3">
+
+                    <div class="card" style="width: 18rem; margin: 15px 0px;">
+                       
+                        <img class="card-img-top" src="<%= items[a].image  %> " alt="Card image cap">
+                        <div class="card-body">
+                            
+                            <h3 class=""><%= items[a].title  %> </h3>
+                            <br>
+                            <br>
+                          <p class="card-text"><%= items[a].description.slice(0, 100)  %>...</p>
+                          <a href="#" class="btn btn-primary"><%= items[a].tags  %> </a>
+                        <br> <br>
+                        <div class="row">
+                            <div class="col-3">
+                                <form action="/delete" method="post">
+                                    <input type="text" value="<%= items[a].key %> " name="selected" style="visibility: hidden;" id="">
+                                    
+                                    <button type="submit" class="btn"><i  class="fas fa-2x fa-trash text-danger"></i></button>
+                                </form>
+
+                            </div>
+                            <div class="col-3">
+                                <a style="position: absolute; bottom: 10px;" href="/view/<%=items[a].key%> "> <i class="fas fa-eye fa-2x text-primary"></i></a>   
+                       
+
+                      
+                            </div>
+
+                            <div class="col-3">
+                                <a style="position: absolute; bottom: 10px;" href="/edit/<%=items[a].key%> "> <i class="fas fa-pencil-alt fa-2x"></i>
+
+                                </a>   
+                       
+
+                      
+                            </div>
+                        </div>
+                         
+
+                      
+                      
+
+
+
+
+
+                          <br><br>
+                          <p class=""><%= items[a].date  %> </p>
+                        </div>
+                        
+                      </div>
+
+                </div>
+
+
+            <% } %> 
+
+
+        </div>
+    </div>
+    
+</body>
+</html>
