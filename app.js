@@ -5,7 +5,7 @@ const port = 5000;
 const mongoose = require('mongoose');
 
 
-var url = "mongodb://localhost:27017/TravelBlogDb";
+var url = "mongodb+srv://root:0995@nodejs.2j0z7.mongodb.net/database";
 mongoose.connect(url, {useUnifiedTopology: true, useNewUrlParser: true});
 
 const db = mongoose.connection;
